@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algoritmo directo</title>
-    
+
 </head>
 
 <body>
@@ -20,7 +20,7 @@
 
     <script>
         var clicks = 1
-        var x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+        var x1 = +x1, x2 = +x2, y1 = +y1, y2 = +y2;
         function showCoords(event) {
             if (clicks == 1) {
                 // alert("Entra");
@@ -46,34 +46,69 @@
             // CANVAS
             var lienzo = document.querySelector("canvas");
             // var x1 = 1, x2 = 30, y1 = 2, y2 = 40;
+
             var m = (y2 - y1) / (x2 - x1);
-            var dify=y2-y1;
-            var difx=x2-x1;
+            var dify = Math.abs(y2 - y1);
+            var difx = Math.abs(x2 - x1);
             // alert("Este es el valor de m= "+ m);
             var b = y1 - (m * x1);
-            // alert("Este es el valor b= " + b);
-            // var x=4;
-            // var y=Math.round(m*x+b);
-            // alert("Este es el valor de y= " + y);
             var context = lienzo.getContext("2d");
             context.fillStyle = "red";
-            for (let i = x1; i <= x2; i++) {
-                // alert("Este es el valor de x="+i);
-                var y=0;
-                var x=0;
-                if (dify>difx){
-                    x = Math.round((i - b)/m);
-                    context.fillRect(i, x, 4, 4);
-                }else{
-                    
-                    y = Math.round(m * i + b);
-                    context.fillRect(i, y, 4, 4);
-                }
-                // alert("Este es el valor de y="+y);
-                // context.fillRect(i, y, 4, 4);
+            // var y = 0;
+            // var x = 0;
+            if (difx > dify) {
+                if (x1 < x2) {
+                    for (var i = x1; i <= x2; i++) {
+                        var y = Math.round(Number(m * i + b))
+                        context.fillRect(i - 10, y - 10, 4, 4);
 
+                    }
+                } else {
+
+                    for (var i = x2; i <= x1; i++) {
+                        var x = Math.round(Number(m * i + b))
+                        context.fillRect(x - 10, i - 10, 4, 4);
+                    }
+                }
+
+
+            } else if (difx < dify) {
+                if (y1 < y2) {
+
+                    for (var i = y1; i <= y2; i++) {
+                        var x = Math.round(Number((i - b) / m))
+                        context.fillRect(x - 10, i - 10, 4, 4);
+                    }
+                } else {
+                    for (var i = y2; i <= y1; i++) {
+                        var x = Math.round(Number((i - b) / m))
+                        context.fillRect(x - 10, i - 10, 4, 4);
+                    }
+                }
 
             }
+            else {
+                for (var i = x1; i <= x2; i++) {
+                    var y = Math.round(Number(m * i + b))
+                    context.fillRect(i - 10, y - 10, 4, 4);
+
+                }
+
+            }
+            // for (let i = x1; i <= x2; i++) {
+            //     // alert("Este es el valor de x="+i);
+            //     var y = 0;
+            //     var x = 0;
+            //     if (dify > difx) {
+            //         x = Math.round((i - b) / m);
+            //         context.fillRect(i, x, 4, 4);
+            //     } else {
+
+            //         y = Math.round(m * i + b);
+            //         context.fillRect(i, y, 4, 4);
+            //     }               
+
+            // }
         }
 
         // context.fillRect(1,2,20,20);
