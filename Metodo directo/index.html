@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo directo</title>
+    
+</head>
+
+<body>
+    <!-- <label for="">X1</label>
+    <input type="number" min="0" id="x1"> -->
+    <!-- <div ></div> -->
+
+    <canvas width="600" height="580" style="border: 3px solid #000000;" onmousedown="showCoords(event)">
+    </canvas>
+    <p id="demo"></p>
+
+    <script>
+        var clicks = 1
+        var x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+        function showCoords(event) {
+            if (clicks == 1) {
+                // alert("Entra");
+                x1 = event.clientX;
+                y1 = event.clientY;
+                var coor = "X: " + x1 + ", Y: " + y1;
+                clicks = clicks + 1;
+                document.getElementById("demo").innerHTML = coor;
+
+            } else if (clicks == 2) {
+                // alert("Entra al 2do click");
+                x2 = event.clientX;
+                y2 = event.clientY;
+                var coor = "X: " + x2 + ", Y: " + y2;
+                clicks = clicks + 1;
+                document.getElementById("demo").innerHTML = coor;
+            } else {
+                // alert(clicks);
+                alert("Solo se necesitan dos coordenadas");
+            }
+
+            // alert(x1 + " " + y1 + " " + x2 + " " + y2);
+            // CANVAS
+            var lienzo = document.querySelector("canvas");
+            // var x1 = 1, x2 = 30, y1 = 2, y2 = 40;
+            var m = (y2 - y1) / (x2 - x1);
+            var dify=y2-y1;
+            var difx=x2-x1;
+            // alert("Este es el valor de m= "+ m);
+            var b = y1 - (m * x1);
+            // alert("Este es el valor b= " + b);
+            // var x=4;
+            // var y=Math.round(m*x+b);
+            // alert("Este es el valor de y= " + y);
+            var context = lienzo.getContext("2d");
+            context.fillStyle = "red";
+            for (let i = x1; i <= x2; i++) {
+                // alert("Este es el valor de x="+i);
+                var y=0;
+                var x=0;
+                if (dify>difx){
+                    x = Math.round((i - b)/m);
+                    context.fillRect(i, x, 4, 4);
+                }else{
+                    
+                    y = Math.round(m * i + b);
+                    context.fillRect(i, y, 4, 4);
+                }
+                // alert("Este es el valor de y="+y);
+                // context.fillRect(i, y, 4, 4);
+
+
+            }
+        }
+
+        // context.fillRect(1,2,20,20);
+        // context.fillRect(2,3,20,20);
+        // context.fillRect(3,3,20,20);
+        // context.fillRect(4,4,20,20);
+
+
+
+    </script>
+
+</body>
+
+</html>

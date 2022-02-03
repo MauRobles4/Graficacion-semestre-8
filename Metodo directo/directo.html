@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+</head>
+<body>
+    <canvas id="canv" width="400" height="400" style="border:1px solid #000000;">Tu navegador no acepta el elemento Canvas</canvas>
+    <script type="text/javascript"> 
+        var ctx = document.getElementById('canv').getContext("2d");
+        var x1 = 100, y1 = 200, x2 = 300, y2 = 100;
+
+        var dx = x2 - x1; // numero de pasos (x)
+        var dy = y2 - y1; // numero de pasos de (y)
+
+        for (var x=x1;x<=x2;x++) {
+         var y = y1 + (dy) * (x - x1)/(dx);
+         ctx.fillRect(x,y,1,1);
+        }
+    </script>
+</body>
+</html>
