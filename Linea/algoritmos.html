@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algortimos basicos para trazado de lineas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="directo.js"></script>
+    <script src="dda.js"></script>
+    <script src="bresenham.js"></script>
+</head>
+
+<body>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <div class="input-group-text">
+
+                <label for=""><input type="radio" value="Directo" name="Algoritmo" id="Algoritmo"
+                        aria-label="Radio button for following text input">Directo
+                </label>
+            </div>
+            <div class="input-group-text">
+
+                <label for=""><input type="radio" value="DDA" name="Algoritmo" id="Algoritmo"
+                        aria-label="Radio button for following text input"> DDA
+                </label>
+            </div>
+            <div class="input-group-text">
+
+                <label for=""><input type="radio" value="Bresenham" name="Algoritmo" id="Algoritmo"
+                        aria-label="Radio button for following text input">Bresenham
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="canvas" width="600" height="580" style="border: 3px solid #000000;" onmousedown="dibujar(event)">
+    </canvas>
+    <!-- <canvas width="600" height="580" style="border: 3px solid #000000;" onmousedown="showCoords(event)">
+    </canvas> -->
+    <p id="demo"></p>
+
+    <script>
+        var opcion = document.getElementById("Algoritmo");
+        function dibujar(event) {
+            // alert(Algoritmo.value);
+            if (Algoritmo.value == "Directo") {
+                // alert("Se selecciono metodo directo");
+                showCoords(event);
+                // bresenham(event);
+
+            } else if (opcion.value == "DDA") {
+                alert("Se selecciono DDA");
+                dda(event);
+
+            } else if (opcion.value == "Bresenham") {
+                alert("Se selecciono metodo Bresenham");
+                bresenham(event);
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
