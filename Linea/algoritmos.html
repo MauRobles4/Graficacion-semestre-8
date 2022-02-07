@@ -18,22 +18,23 @@
         <div class="input-group-prepend">
             <div class="input-group-text">
 
-                <label for=""><input type="radio" value="Directo" name="Algoritmo" id="Algoritmo"
+                <label for=""><input type="radio" value="Directo" name="Algoritmo" id="Directo"
                         aria-label="Radio button for following text input">Directo
                 </label>
             </div>
             <div class="input-group-text">
 
-                <label for=""><input type="radio" value="DDA" name="Algoritmo" id="Algoritmo"
+                <label for=""><input type="radio" value="DDA" name="Algoritmo" id="DDA"
                         aria-label="Radio button for following text input"> DDA
                 </label>
             </div>
             <div class="input-group-text">
 
-                <label for=""><input type="radio" value="Bresenham" name="Algoritmo" id="Algoritmo"
+                <label for=""><input type="radio" value="Bresenham" name="Algoritmo" id="Bresenham"
                         aria-label="Radio button for following text input">Bresenham
                 </label>
             </div>
+            <button type="button" class="btn btn-outline-primary" onclick="limpiar()"> Limpiar </button>
         </div>
     </div>
 
@@ -44,25 +45,62 @@
     <p id="demo"></p>
 
     <script>
-        var opcion = document.getElementById("Algoritmo");
+        var xi = 0;
+        var yi = 0;
+        var click1 = true;
         function dibujar(event) {
-            // alert(Algoritmo.value);
-            if (Algoritmo.value == "Directo") {
-                // alert("Se selecciono metodo directo");
-                showCoords(event);
-                // bresenham(event);
+            var lienzo = document.getElementById("canvas").getContext("2d");
+            lienzo.fillStyle = "red";
+            if (click1) {
+                xi = event.offsetX;
+                yi = event.offsetY;
+                lienzo.fillRect(xi, yi, 4, 4);
+            } else {
+                if (document.getElementById("Directo").checked) {
+                    if ((xi > event.offsetX) && (yi > event.offsetY)) {
+                        // alert("Entra1");
+                        directo(event.offsetX, event.offsetY, xi, yi, lienzo);
+                    } else {
+                        // alert("Entra2");
+                        directo(xi, yi, event.offsetX, event.offsetY, lienzo);
+                    }
+                    // directo(event);
+                    // bresenham(event);
 
-            } else if (opcion.value == "DDA") {
-                alert("Se selecciono DDA");
-                dda(event);
+                } else if (document.getElementById("DDA").checked) {
+                    // alert("Se selecciono DDA");
+                    if ((xi > event.offsetX) && (yi > event.offsetY)) {
+                        // alert("Entra dda");
+                        dda(event.offsetX, event.offsetY, xi, yi, lienzo);
+                    } else {
+                        // alert("Entra dda2");
+                        dda(xi, yi, event.offsetX, event.offsetY, lienzo);
+                    }
+                    // dda(event);
 
-            } else if (opcion.value == "Bresenham") {
-                alert("Se selecciono metodo Bresenham");
-                bresenham(event);
+                } else if (document.getElementById("Bresenham").checked) {
+                    // alert("Se selecciono metodo Bresenham");
+                    if ((xi > event.offsetX) && (yi > event.offsetY)) {
+                        // alert("Entra bresenham");
+                        bresenham(event.offsetX, event.offsetY, xi, yi, lienzo);
+                    } else {
+                        // alert("Entra bresenham2");
+                        bresenham(xi, yi, event.offsetX, event.offsetY, lienzo);
+                    }
+                    // bresenham(event);
 
+                }
             }
+            click1=! click1;
 
         }
+
+        function limpiar() {
+            var canvas = document.getElementById("canvas");
+            var contexto = canvas.getContext("2d");
+            contexto.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
 
     </script>
 
