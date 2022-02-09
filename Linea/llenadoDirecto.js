@@ -61,4 +61,22 @@ function llenadoDirecto(x1, y1, x2, y2, lienzo) {
 
     }
 
+    var m = 4;
+    var b = y1 - (m * x1);
+    alert("m=" + m + " b=" + b);
+    // DIAGONAL ARRIBA A ABAJO
+    for (var x = 0; x <= 1000; x += 4) {
+        console.log(x);
+        for (var y = 0; y <= 1000; y++) {
+            // alert("X=" +x + " ,Y=" +y);
+            // var x = (y - b) / m;
+            var y2 = (y - b) / m;
+            // var y2 = (m * x) + b;
+            lienzo.fillRect(x, y2, 1, 1);
+
+
+        }
+
+    }
+
 }
