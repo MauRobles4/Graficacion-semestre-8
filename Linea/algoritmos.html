@@ -11,6 +11,8 @@
     <script src="directo.js"></script>
     <script src="dda.js"></script>
     <script src="bresenham.js"></script>
+    <script src="llenadoDirecto.js"></script>
+    <script src="llenadoDDA.js"></script>
 </head>
 
 <body>
@@ -18,7 +20,7 @@
         <div class="input-group-prepend">
             <div class="input-group-text">
 
-                <label for=""><input type="radio" value="Directo" name="Algoritmo" id="Directo"
+                <label for=""><input checked type="radio" value="Directo" name="Algoritmo" id="Directo"
                         aria-label="Radio button for following text input">Directo
                 </label>
             </div>
@@ -35,10 +37,11 @@
                 </label>
             </div>
             <button type="button" class="btn btn-outline-primary" onclick="limpiar()"> Limpiar </button>
+            <button type="button" class="btn btn-outline-primary" onclick="llenar()"> LLenar </button>
         </div>
     </div>
 
-    <canvas id="canvas" width="600" height="580" style="border: 3px solid #000000;" onmousedown="dibujar(event)">
+    <canvas id="canvas" width="1000" height="1000" style="border: 3px solid #000000;" onmousedown="dibujar(event)">
     </canvas>
     <!-- <canvas width="600" height="580" style="border: 3px solid #000000;" onmousedown="showCoords(event)">
     </canvas> -->
@@ -48,9 +51,9 @@
         var xi = 0;
         var yi = 0;
         var click1 = true;
+        var lienzo = document.getElementById("canvas").getContext("2d");
+        lienzo.fillStyle = "gray";
         function dibujar(event) {
-            var lienzo = document.getElementById("canvas").getContext("2d");
-            lienzo.fillStyle = "red";
             if (click1) {
                 xi = event.offsetX;
                 yi = event.offsetY;
@@ -91,7 +94,7 @@
 
                 }
             }
-            click1=! click1;
+            click1 = !click1;
 
         }
 
@@ -99,6 +102,44 @@
             var canvas = document.getElementById("canvas");
             var contexto = canvas.getContext("2d");
             contexto.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        // LLENADO DE CANVAS
+        function llenar() {
+            if (document.getElementById("Directo").checked) {
+
+                // alert("Entra");
+                llenadoDirecto(0, 0, 1000, 1000, lienzo);
+                // for (var x = 0; x <= 1000; x += 4) {
+                //     llenadoDirecto(x, 0, 1000, 1000, lienzo);
+                    
+                    
+                // }
+
+
+                // directo(event);
+                // bresenham(event);
+
+            } else if (document.getElementById("DDA").checked) {
+                // alert("Se selecciono DDA");
+
+                // alert("Entra dda2");
+                llenadoDDA(0, 0, 1000, 1000, lienzo);
+
+                // dda(event);
+
+            } else if (document.getElementById("Bresenham").checked) {
+                // alert("Se selecciono metodo Bresenham");
+                if ((xi > event.offsetX) && (yi > event.offsetY)) {
+                    // alert("Entra bresenham");
+                    bresenham(event.offsetX, event.offsetY, xi, yi, lienzo);
+                } else {
+                    // alert("Entra bresenham2");
+                    bresenham(xi, yi, event.offsetX, event.offsetY, lienzo);
+                }
+                // bresenham(event);
+
+            }
+
         }
 
 
