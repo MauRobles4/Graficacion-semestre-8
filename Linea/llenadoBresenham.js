@@ -1,4 +1,4 @@
-function bresenham(x1, y1, x2, y2, lienzo){ 
+function llenadoBresenham(x1, y1, x2, y2, lienzo){ 
     var dx = Math.abs(x2 - x1);
     var dy = Math.abs(y2 - y1);
 

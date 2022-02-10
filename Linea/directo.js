@@ -9,11 +9,13 @@ function directo(x1, y1, x2, y2, lienzo) {
             for (var y = y1; y <= y2; y++) {
                 
                 lienzo.fillRect(x1, y, 4, 4);
+                // lienzo.strokeRect(x1,y,4,4);
             }
         } else {
             for (var y = y2; y <= y1; y++) {
                 
-                lienzo.fillRect(x1, y, 4, 4);
+                // lienzo.fillRect(x1, y, 4, 4);
+                // lienzo.strokeRect(x1,y,4,4);
             }
         }
     } else {

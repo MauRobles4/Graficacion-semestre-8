@@ -13,6 +13,9 @@
     <script src="bresenham.js"></script>
     <script src="llenadoDirecto.js"></script>
     <script src="llenadoDDA.js"></script>
+    <script src="rectangulo.js"></script>
+    <script src="lapiz.js"></script>
+
 </head>
 
 <body>
@@ -34,6 +37,24 @@
 
                 <label for=""><input type="radio" value="Bresenham" name="Algoritmo" id="Bresenham"
                         aria-label="Radio button for following text input">Bresenham
+                </label>
+            </div>
+            <div class="input-group-text">
+
+                <label for=""><input type="radio" value="Rectangulo" name="Algoritmo" id="Rectangulo"
+                        aria-label="Radio button for following text input">Rectangulo
+                </label>
+            </div>
+            <div class="input-group-text">
+
+                <label for=""><input type="radio" value="Cuadrado" name="Algoritmo" id="Cuadrado"
+                        aria-label="Radio button for following text input">Cuadrado
+                </label>
+            </div>
+            <div class="input-group-text">
+
+                <label for=""><input type="radio" value="Lapiz" name="Algoritmo" id="Lapiz"
+                        aria-label="Radio button for following text input">Lapiz
                 </label>
             </div>
             <button type="button" class="btn btn-outline-primary" onclick="limpiar()"> Limpiar </button>
@@ -58,6 +79,12 @@
                 xi = event.offsetX;
                 yi = event.offsetY;
                 lienzo.fillRect(xi, yi, 4, 4);
+                if (document.getElementById("Lapiz").checked) {
+                    // alert("Se selecciono DDA");                   
+                        lapiz();                   
+                    // dda(event);
+
+                }
             } else {
                 if (document.getElementById("Directo").checked) {
                     if ((xi > event.offsetX) && (yi > event.offsetY)) {
@@ -92,7 +119,19 @@
                     }
                     // bresenham(event);
 
+                }else if (document.getElementById("Rectangulo").checked) {
+                    // alert("Se selecciono DDA");
+                    if ((xi > event.offsetX) && (yi > event.offsetY)) {
+                        // alert("Entra dda");
+                        rectangulo(event.offsetX, event.offsetY, xi, yi, lienzo);
+                    } else {
+                        // alert("Entra dda2");
+                        rectangulo(xi, yi, event.offsetX, event.offsetY, lienzo);
+                    }
+                    // dda(event);
+
                 }
+                
             }
             click1 = !click1;
 
