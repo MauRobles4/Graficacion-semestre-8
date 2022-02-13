@@ -13,6 +13,7 @@
     <script src="bresenham.js"></script>
     <script src="llenadoDirecto.js"></script>
     <script src="llenadoDDA.js"></script>
+    <script src="llenadoBresenham.js"></script>
     <script src="rectangulo.js"></script>
     <script src="lapiz.js"></script>
 
@@ -147,7 +148,8 @@
             if (document.getElementById("Directo").checked) {
 
                 // alert("Entra");
-                llenadoDirecto(0, 0, 1000, 1000, lienzo);
+                // llenadoDirecto(0, 0, 1000, 1000, lienzo);
+                llenadoDirecto(0);
                 // for (var x = 0; x <= 1000; x += 4) {
                 //     llenadoDirecto(x, 0, 1000, 1000, lienzo);
                     
@@ -162,19 +164,18 @@
                 // alert("Se selecciono DDA");
 
                 // alert("Entra dda2");
-                llenadoDDA(0, 0, 1000, 1000, lienzo);
+                // llenadoDDA(0, 0, 1000, 1000, lienzo);
+                llenadoDDA(0);
 
                 // dda(event);
 
             } else if (document.getElementById("Bresenham").checked) {
                 // alert("Se selecciono metodo Bresenham");
-                if ((xi > event.offsetX) && (yi > event.offsetY)) {
-                    // alert("Entra bresenham");
-                    bresenham(event.offsetX, event.offsetY, xi, yi, lienzo);
-                } else {
-                    // alert("Entra bresenham2");
-                    bresenham(xi, yi, event.offsetX, event.offsetY, lienzo);
-                }
+               
+                    // bresenham(event.offsetX, event.offsetY, xi, yi, lienzo);
+               
+                    llenadoBresenham(0);
+                
                 // bresenham(event);
 
             }
