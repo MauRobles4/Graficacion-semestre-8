@@ -16,6 +16,7 @@
     <script src="llenadoBresenham.js"></script>
     <script src="rectangulo.js"></script>
     <script src="lapiz.js"></script>
+    <script src="dibujaPoligono.js"></script>
 
 </head>
 
@@ -58,6 +59,18 @@
                         aria-label="Radio button for following text input">Lapiz
                 </label>
             </div>
+            <div class="input-group-text">
+
+                <label for=""><input type="radio" value="Poligono" name="Algoritmo" id="Poligono"
+                        aria-label="Radio button for following text input">Poligono
+                </label>
+            </div>
+            <div class="input-group-text">
+
+                <label for=""><input type="number" min="3" placeholder="Lados" name="lados" id="lados"
+                        aria-label="Radio button for following text input">
+                </label>
+            </div>
             <button type="button" class="btn btn-outline-primary" onclick="limpiar()"> Limpiar </button>
             <button type="button" class="btn btn-outline-primary" onclick="llenar()"> LLenar </button>
         </div>
@@ -82,7 +95,24 @@
                 lienzo.fillRect(xi, yi, 4, 4);
                 if (document.getElementById("Lapiz").checked) {
                     // alert("Se selecciono DDA");                   
-                        lapiz();                   
+                    lapiz();
+                    // dda(event);
+
+                } else if (document.getElementById("Poligono").checked) {
+                    // alert("Se selecciono DDA");                    
+                        // alert("Entra dda");
+                        // dibujaPoligono();
+                        if (lados.value==""){
+                            alert("Debe ingresar el numero de lados");
+
+                        }else{
+
+                            // dibujaPoligono([100,110], 70, lados.value, 1);
+                            dibujaPoligono([event.offsetX, event.offsetY], 70, lados.value, 1);
+                        }
+                    
+                        // alert("Entra dda2");
+                    
                     // dda(event);
 
                 }
@@ -120,19 +150,17 @@
                     }
                     // bresenham(event);
 
-                }else if (document.getElementById("Rectangulo").checked) {
+                } else if (document.getElementById("Rectangulo").checked) {
                     // alert("Se selecciono DDA");
-                    if ((xi > event.offsetX) && (yi > event.offsetY)) {
+                    
                         // alert("Entra dda");
-                        rectangulo(event.offsetX, event.offsetY, xi, yi, lienzo);
-                    } else {
-                        // alert("Entra dda2");
-                        rectangulo(xi, yi, event.offsetX, event.offsetY, lienzo);
-                    }
+                        // rectangulo(event.offsetX, event.offsetY, xi, yi, lienzo);
+                        rectangulo(xi,yi,event.offsetX,event.offsetY);
+                    
                     // dda(event);
 
                 }
-                
+
             }
             click1 = !click1;
 
@@ -152,8 +180,8 @@
                 llenadoDirecto(0);
                 // for (var x = 0; x <= 1000; x += 4) {
                 //     llenadoDirecto(x, 0, 1000, 1000, lienzo);
-                    
-                    
+
+
                 // }
 
 
@@ -171,11 +199,11 @@
 
             } else if (document.getElementById("Bresenham").checked) {
                 // alert("Se selecciono metodo Bresenham");
-               
-                    // bresenham(event.offsetX, event.offsetY, xi, yi, lienzo);
-               
-                    llenadoBresenham(0);
-                
+
+                // bresenham(event.offsetX, event.offsetY, xi, yi, lienzo);
+
+                llenadoBresenham(0);
+
                 // bresenham(event);
 
             }

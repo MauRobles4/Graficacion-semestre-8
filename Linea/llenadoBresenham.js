@@ -8,7 +8,7 @@ function llenadoBresenham(event) {
     y1 = 0;
     y2 = 0;
 
-    for (let index = 1; index <= 100; index++) {
+    for (let index = 1; index <= 500; index++) {
         x1 = 0;
         x2 = 1000;
         y1 = y1 + 2;
@@ -139,7 +139,7 @@ function llenadoBresenham(event) {
     y1 = 0;
     y2 = 0;
 
-    for (let index = 1; index <= 100; index++) {
+    for (let index = 1; index <= 1000; index++) {
 
         x2 += 2;
         y1 += 2;
@@ -268,7 +268,7 @@ function llenadoBresenham(event) {
     x2 = 1000;
     y2 = 0;
 
-    for (let index = 1; index <= 100; index++) {
+    for (let index = 1; index <= 1000; index++) {
 
         x2 -= 2;
         y1 += 2;
@@ -396,7 +396,7 @@ function llenadoBresenham(event) {
     x2 = 0;
     y2 = 1000;
 
-    for (let index = 1; index <= 100; index++) {
+    for (let index = 1; index <= 500; index++) {
 
         x2 += 2;
         x1 += 2;

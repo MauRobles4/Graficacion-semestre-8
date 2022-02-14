@@ -1,5 +1,6 @@
 function llenadoDirecto(event) {
     let contar = 1;
+    var y1 = 0, y2 = 0;
     // alert("Entra");
     console.time('Tiempo');
     for (let index = 1; index <= 500; index++) {
@@ -15,7 +16,7 @@ function llenadoDirecto(event) {
 
         rangox = Math.abs(x1 - x2);
         rangoy = Math.abs(y1 - y2);
-        // console.log("rango x: " + rangox, "rango y: " + rangoy);
+        
 
         if (rangox > rangoy) {
             if (x1 > x2) {
@@ -127,7 +128,7 @@ function llenadoDirecto(event) {
 
         rangox = Math.abs(x1 - x2);
         rangoy = Math.abs(y1 - y2);
-        // console.log("rango x: " + rangox, "rango y: " + rangoy);
+        
 
         if (contar == 1) {
             if (x1 > x2) {

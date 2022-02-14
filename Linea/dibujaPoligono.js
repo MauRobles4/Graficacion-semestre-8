@@ -1,7 +1,11 @@
-var canvas = document.getElementById("gameArea");
-var contexto = canvas.getContext("2d");
+// var canvas = document.getElementById("canvas");
 
 function dibujaPoligono(centro, radio, numeroLados, fill) {
+  var canvas = document.querySelector("canvas");
+  var contexto = canvas.getContext("2d");
+  contexto.strokeStyle = "black";
+  contexto.fillStyle = "gray";
+  // alert("Entra a dibujar el poligono");
   var x = radio * Math.cos(Math.PI / 180 * 0) + centro[0];
   var y = radio * Math.sin(Math.PI / 180 * 0) + centro[1];
   contexto.beginPath();
@@ -14,12 +18,12 @@ function dibujaPoligono(centro, radio, numeroLados, fill) {
     contexto.lineTo(x, y);
     contexto.lineTo(centro[0], centro[1]);
     contexto.lineTo(x, y);
-  }  
+  }
   contexto.closePath();
   if (fill) contexto.fill();
   contexto.stroke();
 }
 
-contexto.strokeStyle = "purple";
-contexto.fillStyle = "green";
-dibujaPoligono([100,110], 70, 5, 1);
+// contexto.strokeStyle = "purple";
+// contexto.fillStyle = "green";
+// dibujaPoligono([100,110], 70, 5, 1);
